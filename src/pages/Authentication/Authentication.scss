@@ -1,0 +1,44 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &__top {
+    text-align: center;
+    margin-bottom: 50px;
+
+    h2 {
+      font-family: Roboto, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 33px;
+    }
+
+    p {
+      font-family: Roboto, sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 21px;
+      opacity: 0.5;
+    }
+  }
+
+  .button {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .block {
+    width: 430px;
+  }
+
+  &__footer-link{
+    color: #ADADAD;
+    font-size: 16px;
+    font-style: normal;
+    text-align: center;
+    display: block;
+  }
+}

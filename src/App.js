@@ -1,8 +1,10 @@
-import './App.css';
+import React from "react";
 
+import { Authentication } from "./pages";
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
+      <Authentication />
     </div>
   );
 }
