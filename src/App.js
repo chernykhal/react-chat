@@ -1,10 +1,13 @@
 import React from "react";
 
 import { Authentication } from "./pages";
+import { Route } from "react-router-dom";
 function App() {
   return (
     <div className="wrapper">
-      <Authentication />
+      <Route path={["/login", "/register"]} exact>
+        <Authentication />
+      </Route>
     </div>
   );
 }
