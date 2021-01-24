@@ -49,6 +49,7 @@
     flex-direction: column;
     height: 400px;
     text-align: center;
+
     h3 {
       font-size: 22px;
       font-weight: 400;
@@ -58,10 +59,12 @@
     p {
       font-size: 14px;
       font-weight: 300;
+      line-height: 26px;
       text-align: center;
-      opacity: 0.5;
+      margin-top: 14px;
     }
-    svg{
+
+    svg {
       height: 50px;
       width: 50px;
       margin-bottom: 15px;
