@@ -8,7 +8,17 @@ import "./Authentication.scss";
 import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
-  const [isRegistered, setRegistered] = React.useState(true);
+  const [isRegistered, setRegistered] = React.useState(false);
+
+  const onFinish = (values) => {
+    console.log("Success:", values);
+    setRegistered(true);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <React.Fragment>
       <div className="auth__top">
@@ -18,6 +28,8 @@ const RegisterForm = () => {
       <Block>
         {!isRegistered ? (
           <Form
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
             name="normal_register"
             className="register-form"
             initialValues={{ remember: true }}
