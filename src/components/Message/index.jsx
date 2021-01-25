@@ -17,30 +17,47 @@ const Message = ({
   isOutgoing,
   isReaded,
   attachments,
+  isTyping,
 }) => (
-  <div className={classNames("message", { "message--outgoing": isOutgoing })}>
+  <div
+    className={classNames("message", {
+      "message--outgoing": isOutgoing,
+      "message--istyping": isTyping,
+    })}
+  >
     <div className="message__avatar">
       <img src={avatar} alt={`Avatar ${user.fullname}`} />
     </div>
     <div className="message__content">
       <div className="message__bubble">
         {text && <p className={"message__text"}>{text}</p>}
+        {isTyping && (
+          <div className={"message__typing"}>
+            <div className="bubble">
+              <div className="bubbleDot"></div>
+              <div className="bubbleDot"></div>
+              <div className="bubbleDot"></div>
+            </div>
+          </div>
+        )}
         {attachments && (
-          <p className={"message__attachments"}>
+          <div className={"message__attachments"}>
             {attachments.map((attachment) => (
               <div className="message__attachment-item">
                 <img src={attachment.url} alt={attachment.filename} />
               </div>
             ))}
-          </p>
+          </div>
         )}
       </div>
-      <span className={"message__date"}>
-        {formatDistanceToNow(new Date(date), {
-          addSuffix: true,
-          locale: ruLocale,
-        })}
-      </span>
+      {/*{date && (*/}
+      {/*  <span className={"message__date"}>*/}
+      {/*    {formatDistanceToNow(new Date(date), {*/}
+      {/*      addSuffix: true,*/}
+      {/*      locale: ruLocale,*/}
+      {/*    })}*/}
+      {/*  </span>*/}
+      {/*)}*/}
     </div>
     {isOutgoing && (
       <div className="message__status">

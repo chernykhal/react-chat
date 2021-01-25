@@ -11,12 +11,12 @@
     display: flex;
     flex-direction: column-reverse;
 
+
     img {
       border-radius: 100%;
       width: 33px;
       height: 33px;
       margin-right: 13px;
-      margin-bottom: 23px;
     }
   }
 
@@ -30,18 +30,20 @@
     box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
     border-radius: 12px 12px 12px 0px;
     padding: 15px;
-    margin-bottom: 8px;
 
     #{$self}__text {
       color: #fff;
       line-height: 20px;
     }
+
     #{$self}__text ~ #{$self}__attachments {
       margin-top: 10px;
       display: flex;
-      #{$self}__attachment-item{
+
+      #{$self}__attachment-item {
         margin-right: 5px;
-        img{
+
+        img {
           width: 45px;
           height: 45px;
           border-radius: 8px;
@@ -50,10 +52,18 @@
     }
   }
 
+
   &__date {
     font-size: 12px;
     line-height: 14px;
     opacity: 0.4;
+  }
+
+  &--istyping {
+    #{$self}__bubble {
+      background: #e5edff;
+      box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.04);
+    }
   }
 
   &--outgoing {
@@ -73,6 +83,7 @@
       border: 1px solid #ECECEC;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0220444);
       border-radius: 12px 12px 0px 12px;
+
       p {
         color: #202020;
       }
@@ -81,10 +92,67 @@
     #{$self}__date {
       text-align: right;
     }
+
     #{$self}__status {
       align-self: flex-end;
-      margin-bottom: 23px;
+      margin-bottom: 5px;
       margin-right: 5px;
+    }
+  }
+
+  &__typing {
+    $color: #ddd;
+    $width: 40px;
+    $height: auto;
+    $circle_size: $width / 6;
+    $box-shadow: 0 0 .55rem rgba(17, 17, 17, 0.5), 0 0 .55rem rgba(17, 17, 17, 0.5);
+    $animation_time: 1.5s;
+    $animation_delay: 0.5s;
+    @keyframes fade_in_out {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    display: flex;
+
+    .bubble {
+      display: flex;
+      position: relative;
+      width: $width;
+      height: $height;
+      align-items: center;
+      justify-content: space-around;
+
+      border-radius: $height;
+    }
+
+    .bubbleDot {
+      width: $circle_size;
+      height: $circle_size;
+
+      border-radius: 100%;
+      background-color: #a6bdf0;
+
+      animation: fade_in_out $animation_time infinite;
+      animation-delay: $animation_delay / 2;
+
+      &:first-of-type {
+        margin-left: $circle_size;
+
+        animation-delay: 0s;
+      }
+
+      &:last-of-type {
+        margin-right: $circle_size;
+
+        animation-delay: $animation_delay;
+      }
     }
   }
 }

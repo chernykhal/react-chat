@@ -51,6 +51,22 @@ const Home = () => {
           },
         ]}
       />
+      <Message
+        avatar={
+          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
+        }
+        user={{ fullname: "Alexey" }}
+        isOutgoing={false}
+        isTyping={true}
+      />
+      <Message
+        avatar={
+          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
+        }
+        text={"🌝"}
+        user={{ fullname: "Alexey" }}
+        outgoing={false}
+      />
     </section>
   );
 };
