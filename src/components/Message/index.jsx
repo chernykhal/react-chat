@@ -23,33 +23,49 @@ const Message = ({
     className={classNames("message", {
       "message--outgoing": isOutgoing,
       "message--istyping": isTyping,
+      "message--image": attachments && attachments.length === 1,
     })}
   >
     <div className="message__avatar">
       <img src={avatar} alt={`Avatar ${user.fullname}`} />
     </div>
     <div className="message__content">
-      <div className="message__bubble">
-        {text && <p className={"message__text"}>{text}</p>}
-        {isTyping && (
-          <div className={"message__typing"}>
-            <div className="bubble">
-              <div className="bubbleDot"></div>
-              <div className="bubbleDot"></div>
-              <div className="bubbleDot"></div>
+      {text || isTyping ? (
+        <div className="message__bubble">
+          {text && <p className={"message__text"}>{text}</p>}
+          {isTyping && (
+            <div className={"message__typing"}>
+              <div className="bubble">
+                <div className="bubbleDot"></div>
+                <div className="bubbleDot"></div>
+                <div className="bubbleDot"></div>
+              </div>
             </div>
-          </div>
-        )}
-        {attachments && (
+          )}
+          {attachments && (
+            <div className={"message__attachments"}>
+              {attachments.map((attachment) => (
+                <div
+                  className="message__attachment-item"
+                  style={{ backgroundImage: `url(${attachment.url})` }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        attachments && (
           <div className={"message__attachments"}>
             {attachments.map((attachment) => (
-              <div className="message__attachment-item">
-                <img src={attachment.url} alt={attachment.filename} />
-              </div>
+              <div
+                className="message__attachment-item"
+                style={{ backgroundImage: `url(${attachment.url})` }}
+              />
             ))}
           </div>
-        )}
-      </div>
+        )
+      )}
+
       {/*{date && (*/}
       {/*  <span className={"message__date"}>*/}
       {/*    {formatDistanceToNow(new Date(date), {*/}

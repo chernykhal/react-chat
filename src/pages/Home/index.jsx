@@ -67,6 +67,58 @@ const Home = () => {
         user={{ fullname: "Alexey" }}
         outgoing={false}
       />
+      <Message
+        avatar={
+          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
+        }
+        date={"Sat Jan 23 2021 18:00:03"}
+        user={{ fullname: "Alexey" }}
+        isOutgoing={true}
+        isReaded={true}
+        attachments={[
+          {
+            filename: "image1.jpg",
+            url: "https://source.unsplash.com/1920x1080/?random=1&nature,water",
+          },
+        ]}
+      />
+      <Message
+        avatar={
+          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
+        }
+        date={"Sat Jan 23 2021 18:00:03"}
+        user={{ fullname: "Alexey" }}
+        isOutgoing={false}
+        attachments={[
+          {
+            filename: "image1.jpg",
+            url: "https://source.unsplash.com/1920x1080/?random=7&nature,water",
+          },
+          {
+            filename: "image1.jpg",
+            url: "https://source.unsplash.com/1920x1080/?random=8&nature,water",
+          },
+        ]}
+      />
+      <Message
+        avatar={
+          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
+        }
+        date={"Sat Jan 23 2021 18:00:03"}
+        user={{ fullname: "Alexey" }}
+        isOutgoing={true}
+        attachments={[
+          {
+            filename: "image1.jpg",
+            url: "https://source.unsplash.com/1920x1080/?random=9&nature,water",
+          },
+          {
+            filename: "image1.jpg",
+            url:
+              "https://source.unsplash.com/1920x1080/?random=10&nature,water",
+          },
+        ]}
+      />
     </section>
   );
 };
