@@ -31,7 +31,7 @@ const DialogItem = ({ user, message, unReaded }) => {
         <div className="dialogs__item-info-top">
           <b>{fullname}</b>
           <span className={"dialogs__item-info-date"}>
-            <Time date={createdAt} />
+            {/*<Time date={createdAt} />*/}Сейчас
           </span>
         </div>
         <div className="dialogs__item-info-bottom">
