@@ -39,7 +39,7 @@ const DialogItem = ({ user, message, unReaded }) => {
           {isOutgoing && <MessageStatus isReaded={isReaded} />}
           {unReaded > 0 && (
             <div className="dialogs__item-info-unread">
-              <span>{unReaded}</span>
+              <span>{unReaded >= 10 ? "+9" : unReaded}</span>
             </div>
           )}
         </div>
