@@ -8,6 +8,7 @@ const DialogWindow = () => {
   return (
     <div className="dialog-window">
       <Message
+        key={Math.random()}
         avatar={
           "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
         }
@@ -19,6 +20,7 @@ const DialogWindow = () => {
         isOutgoing={false}
       />
       <Message
+        key={Math.random()}
         avatar={
           "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
         }
@@ -53,6 +55,7 @@ const DialogWindow = () => {
         ]}
       />
       <Message
+        key={Math.random()}
         avatar={
           "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
         }
@@ -61,6 +64,7 @@ const DialogWindow = () => {
         isTyping={true}
       />
       <Message
+        key={Math.random()}
         avatar={
           "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
         }
@@ -69,6 +73,7 @@ const DialogWindow = () => {
         outgoing={false}
       />
       <Message
+        key={Math.random()}
         avatar={
           "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
         }
@@ -84,6 +89,7 @@ const DialogWindow = () => {
         ]}
       />
       <Message
+        key={Math.random()}
         avatar={
           "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
         }
@@ -102,6 +108,7 @@ const DialogWindow = () => {
         ]}
       />
       <Message
+        key={Math.random()}
         avatar={
           "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
         }
@@ -119,6 +126,30 @@ const DialogWindow = () => {
               "https://source.unsplash.com/1920x1080/?random=10&nature,water",
           },
         ]}
+      />
+      <Message
+        key={Math.random()}
+        avatar={
+          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
+        }
+        date={"Sat Jan 23 2021 18:00:03"}
+        user={{ fullname: "Alexey" }}
+        isOutgoing={false}
+        audio={
+          "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
+        }
+      />
+      <Message
+        key={Math.random()}
+        avatar={
+          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
+        }
+        date={"Sat Jan 23 2021 18:00:03"}
+        user={{ fullname: "Alexey" }}
+        isOutgoing={true}
+        audio={
+          "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
+        }
       />
     </div>
   );

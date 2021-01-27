@@ -36,8 +36,8 @@
       line-height: 20px;
     }
 
-
   }
+
 
   &__attachments {
     margin-top: 10px;
@@ -61,7 +61,7 @@
 
   &--istyping {
     #{$self}__bubble {
-      background: #e5edff;
+      background: $typing-bubble-background-color;
       box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.04);
     }
   }
@@ -93,7 +93,7 @@
     }
 
     #{$self}__bubble {
-      background: #FFFFFF;
+      background: $outgoing-message-bubble-background-color;
       border: 1px solid #ECECEC;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0220444);
       border-radius: 12px 12px 0px 12px;
@@ -114,8 +114,73 @@
     }
   }
 
+  &--audio {
+    user-select: none;
+
+    audio {
+      display: none;
+    }
+
+    #{$self}__bubble {
+      position: relative;
+      overflow: hidden;
+      width: 290px;
+    }
+
+    #{$self}__audio {
+      &-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        background: $audio-progress-color;
+        transition: width 0.5s linear;
+      }
+
+      &-info {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      &-btn {
+        align-self: center;
+
+        button {
+          border-radius: 100%;
+          background: $audio-btn-play-color;
+          border: none;
+          height: 28px;
+          width: 28px;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+
+          img {
+            height: 13px;
+            align-self: center;
+
+          }
+        }
+
+      }
+
+      &-wave {
+        align-self: center;
+      }
+
+      &-duration {
+        align-self: center;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        color: #FFFFFF;
+        opacity: 0.5;
+      }
+    }
+  }
+
   &__typing {
-    $color: #ddd;
     $width: 40px;
     $height: auto;
     $circle_size: $width / 6;
@@ -151,7 +216,7 @@
       height: $circle_size;
 
       border-radius: 100%;
-      background-color: #a6bdf0;
+      background-color: $typing-bubbleDot-background-color;
 
       animation: fade_in_out $animation_time infinite;
       animation-delay: $animation_delay / 2;
