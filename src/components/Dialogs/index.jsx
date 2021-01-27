@@ -1,20 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
-
+import orderBy from "lodash/orderBy";
 import DialogItem from "./DialogItem";
-
-import readedSvg from "../../assets/icons/readed.svg";
-import unreadedSvg from "../../assets/icons/unreaded.svg";
 
 import "./Dialogs.scss";
 
-const Dialogs = ({ dialogs }) => {
+const Dialogs = ({ dialogs, authUser }) => {
   return (
     <div className={"dialogs"}>
       {dialogs &&
-        dialogs.map((dialogItem, index) => (
-          <DialogItem key={index} {...dialogItem} />
+        orderBy(
+          dialogs,
+          (dialog) => dialog.message.createdAt,
+          "desc"
+        ).map((dialogItem) => (
+          <DialogItem
+            key={dialogItem._id}
+            user={dialogItem.message.user}
+            message={dialogItem.message}
+            unReaded={dialogItem.unReaded}
+            isOutgoing={dialogItem.message.user._id === authUser._id}
+          />
         ))}
     </div>
   );
@@ -22,6 +28,7 @@ const Dialogs = ({ dialogs }) => {
 
 Dialogs.propTypes = {
   dialogs: PropTypes.array,
+  authUser: PropTypes.object,
 };
 
 Dialogs.defaultProps = {

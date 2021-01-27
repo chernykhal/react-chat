@@ -14,9 +14,9 @@ const getAvatar = (avatar) => {
   }
 };
 
-const DialogItem = ({ user, message, unReaded }) => {
+const DialogItem = ({ user, message, unReaded, isOutgoing }) => {
   const { fullname, isOnline, avatar } = user;
-  const { text, isReaded, isOutgoing, createdAt } = message;
+  const { text, isReaded, createdAt } = message;
   return (
     <div
       className={classNames("dialogs__item", {
@@ -31,13 +31,13 @@ const DialogItem = ({ user, message, unReaded }) => {
         <div className="dialogs__item-info-top">
           <b>{fullname}</b>
           <span className={"dialogs__item-info-date"}>
-            {/*<Time date={createdAt} />*/}Сейчас
+            <Time date={createdAt} />
           </span>
         </div>
         <div className="dialogs__item-info-bottom">
           <p>{text}</p>
           {isOutgoing && <MessageStatus isReaded={isReaded} />}
-          {unReaded > 0 && (
+          {!isOutgoing && unReaded > 0 && (
             <div className="dialogs__item-info-unread">
               <span>{unReaded >= 10 ? "+9" : unReaded}</span>
             </div>
