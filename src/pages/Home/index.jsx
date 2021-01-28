@@ -16,13 +16,12 @@ const Home = () => {
               isReaded: true,
               createdAt: new Date(),
               user: {
-                _id: "1fb75436ffe9ddf65efb1785c43744c4",
+                _id: 1,
                 fullname: "Ринат Гильманов",
                 isOnline: true,
                 avatar: "",
               },
             },
-            unReaded: 15,
           },
           {
             _id: Math.random(),

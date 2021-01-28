@@ -14,7 +14,7 @@ const DialogWindow = () => {
         }
         date={"Sat Jan 23 2021 19:33"}
         user={{
-          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          _id: 2,
           fullname: "Alexey",
           avatar: "",
         }}
@@ -28,7 +28,7 @@ const DialogWindow = () => {
         date={"Sat Jan 23 2021 18:00:03"}
         user={{
           _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-          fullname: "Alexey",
+          fullname: "Александр",
           avatar: null,
         }}
         isOutgoing={true}
@@ -59,7 +59,7 @@ const DialogWindow = () => {
       <Message
         key={Math.random()}
         user={{
-          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          _id: 2,
           fullname: "Alexey",
           avatar: null,
         }}
@@ -70,7 +70,7 @@ const DialogWindow = () => {
         key={Math.random()}
         text={"🌝"}
         user={{
-          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          _id: 2,
           fullname: "Alexey",
           avatar: null,
         }}
@@ -81,7 +81,7 @@ const DialogWindow = () => {
         date={"Sat Jan 23 2021 18:00:03"}
         user={{
           _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-          fullname: "Alexey",
+          fullname: "Александр",
           avatar: null,
         }}
         isOutgoing={true}
@@ -97,7 +97,7 @@ const DialogWindow = () => {
         key={Math.random()}
         date={"Sat Jan 23 2021 18:00:03"}
         user={{
-          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          _id: 2,
           fullname: "Alexey",
           avatar: null,
         }}
@@ -118,7 +118,7 @@ const DialogWindow = () => {
         date={"Sat Jan 23 2021 18:00:03"}
         user={{
           _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-          fullname: "Alexey",
+          fullname: "Александр",
           avatar: null,
         }}
         isOutgoing={true}
@@ -138,7 +138,7 @@ const DialogWindow = () => {
         key={Math.random()}
         date={"Sat Jan 23 2021 18:00:03"}
         user={{
-          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          _id: 2,
           fullname: "Alexey",
           avatar: null,
         }}
@@ -152,7 +152,7 @@ const DialogWindow = () => {
         date={"Sat Jan 23 2021 18:00:03"}
         user={{
           _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-          fullname: "Alexey",
+          fullname: "Александр",
           avatar: null,
         }}
         isOutgoing={true}
