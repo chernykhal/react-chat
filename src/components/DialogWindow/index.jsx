@@ -9,26 +9,28 @@ const DialogWindow = () => {
     <div className="dialog-window">
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         text={
           "Мы тут недавно войска Ариовиста разбили, чуваки хотели закрепиться на галльских землях, лол 🌝"
         }
         date={"Sat Jan 23 2021 19:33"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: "",
+        }}
         isOutgoing={false}
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         text={
           "Мы тут недавно войска Ариовиста разбили, чуваки хотели закрепиться на галльских землях, лол 🌝"
         }
         date={"Sat Jan 23 2021 18:00:03"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         isOutgoing={true}
         isReaded={true}
         attachments={[
@@ -56,29 +58,32 @@ const DialogWindow = () => {
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         isOutgoing={false}
         isTyping={true}
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         text={"🌝"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         outgoing={false}
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         date={"Sat Jan 23 2021 18:00:03"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         isOutgoing={true}
         isReaded={true}
         attachments={[
@@ -90,11 +95,12 @@ const DialogWindow = () => {
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         date={"Sat Jan 23 2021 18:00:03"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         isOutgoing={false}
         attachments={[
           {
@@ -109,11 +115,12 @@ const DialogWindow = () => {
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         date={"Sat Jan 23 2021 18:00:03"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         isOutgoing={true}
         attachments={[
           {
@@ -129,11 +136,12 @@ const DialogWindow = () => {
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         date={"Sat Jan 23 2021 18:00:03"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         isOutgoing={false}
         audio={
           "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
@@ -141,11 +149,12 @@ const DialogWindow = () => {
       />
       <Message
         key={Math.random()}
-        avatar={
-          "https://sun1-98.userapi.com/impf/c850732/v850732481/179e66/0jQ0DVIldDk.jpg?size=100x0&quality=96&crop=56,20,288,288&sign=2f5b62b1c86a4a0820f04372f89a6409&ava=1"
-        }
         date={"Sat Jan 23 2021 18:00:03"}
-        user={{ fullname: "Alexey" }}
+        user={{
+          _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
+          fullname: "Alexey",
+          avatar: null,
+        }}
         isOutgoing={true}
         audio={
           "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"

@@ -2,20 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import { MessageStatus, Time } from "../../index";
+import { Avatar, MessageStatus, Time } from "../../index";
 
 import "./DialogItem.scss";
 
-const getAvatar = (avatar) => {
-  if (avatar) {
-    return <img src={`${avatar}`} alt="" />;
-  } else {
-    //make avatar
-  }
-};
-
 const DialogItem = ({ user, message, unReaded, isOutgoing }) => {
-  const { fullname, isOnline, avatar } = user;
+  const { _id, fullname, isOnline, avatar } = user;
   const { text, isReaded, createdAt } = message;
   return (
     <div
@@ -24,8 +16,7 @@ const DialogItem = ({ user, message, unReaded, isOutgoing }) => {
       })}
     >
       <div className="dialogs__item-avatar">
-        {getAvatar(avatar)}
-        {/*<img src={user.avatar} alt={`${user.fullName} avatar`} />*/}
+        <Avatar user={user} />
       </div>
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">

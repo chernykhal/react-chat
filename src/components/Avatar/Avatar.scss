@@ -1,0 +1,15 @@
+.user-avatar {
+  background-size: cover;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  span {
+    align-self: center;
+    user-select: none;
+  }
+}

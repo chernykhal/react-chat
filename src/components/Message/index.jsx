@@ -2,15 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import { MessageStatus } from "../index";
-import audioExampleSvg from "../../assets/icons/audio-example.svg";
-import audioPlaySvg from "../../assets/icons/audio-play.svg";
-import audioPauseSvg from "../../assets/icons/audio-pause.svg";
-
-import { convertCurrentTime } from "../../helpers";
+import { Avatar, MessageStatus } from "../index";
+import MessageAudio from "./MessageAudio";
 
 import "./Message.scss";
-import MessageAudio from "./MessageAudio";
 
 const Message = ({
   avatar,
@@ -33,7 +28,7 @@ const Message = ({
       })}
     >
       <div className="message__avatar">
-        <img src={avatar} alt={`Avatar ${user.fullname}`} />
+        <Avatar user={user} />
       </div>
       <div className="message__content">
         {text || isTyping || audio ? (

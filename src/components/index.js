@@ -5,3 +5,4 @@ export { default as Time } from "./Time";
 export { default as Message } from "./Message";
 export { default as MessageStatus } from "./Message/MessageStatus";
 export { default as DialogWindow } from "./DialogWindow";
+export { default as Avatar } from "./Avatar";

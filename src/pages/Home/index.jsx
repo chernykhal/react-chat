@@ -16,11 +16,10 @@ const Home = () => {
               isReaded: true,
               createdAt: new Date(),
               user: {
-                _id: 1,
+                _id: "1fb75436ffe9ddf65efb1785c43744c4",
                 fullname: "Ринат Гильманов",
                 isOnline: true,
-                avatar:
-                  "https://sun9-59.userapi.com/impg/Q0fZCr512TiBYJbg83G3uSKKe10UnMwOKyN8FQ/Izot0rXoCWE.jpg?size=1408x1400&quality=96&proxy=1&sign=3c33bb98d66d8091fe4b5f2e6a494156&type=album",
+                avatar: "",
               },
             },
             unReaded: 15,
