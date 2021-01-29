@@ -35,20 +35,22 @@ const Dialogs = ({ dialogs, authUser }) => {
           allowClear
         />
       </div>
-      {dialogs &&
-        orderBy(
-          dialogs,
-          (dialog) => dialog.message.createdAt,
-          "desc"
-        ).map((dialogItem) => (
-          <DialogItem
-            key={dialogItem._id}
-            user={dialogItem.message.user}
-            message={dialogItem.message}
-            unReaded={dialogItem.unReaded}
-            isOutgoing={dialogItem.message.user._id === authUser._id}
-          />
-        ))}
+      <div className={"dialogs__items"}>
+        {dialogs &&
+          orderBy(
+            dialogs,
+            (dialog) => dialog.message.createdAt,
+            "desc"
+          ).map((dialogItem) => (
+            <DialogItem
+              key={dialogItem._id}
+              user={dialogItem.message.user}
+              message={dialogItem.message}
+              unReaded={dialogItem.unReaded}
+              isOutgoing={dialogItem.message.user._id === authUser._id}
+            />
+          ))}
+      </div>
     </div>
   );
 };
