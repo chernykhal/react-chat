@@ -1,16 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 import orderBy from "lodash/orderBy";
-import { SearchOutlined } from "@ant-design/icons";
+import { FormOutlined, SearchOutlined } from "@ant-design/icons";
+import { Input, Tooltip, Empty } from "antd";
 
 import DialogItem from "./DialogItem";
 import dialogHeaderSvg from "../../assets/icons/dialogs-header.svg";
-import dialogHeaderButtonSvg from "../../assets/icons/dialogs-header-button.svg";
 
 import "./Dialogs.scss";
-import { Form, Input } from "antd";
 
 const Dialogs = ({ dialogs, authUser }) => {
+  const [inputValue, setValue] = React.useState("");
+  const [filtered, setFilteredItems] = React.useState(Array.from(dialogs));
+  const onChangeInput = (e) => {
+    const value = e.target.value;
+    setValue(value);
+    setFilteredItems(
+      dialogs.filter(
+        (dialog) =>
+          dialog.message.user.fullname
+            .toLowerCase()
+            .indexOf(value.toLowerCase()) >= 0
+      )
+    );
+  };
   return (
     <div className={"dialogs"}>
       <div className="dialogs__header">
@@ -19,12 +32,16 @@ const Dialogs = ({ dialogs, authUser }) => {
         </div>
         <h3>Список диалогов</h3>
         <button className={"dialogs__header-button"}>
-          <img src={dialogHeaderButtonSvg} alt="Dialog Header button svg" />
+          <Tooltip title="Редактировать">
+            <FormOutlined style={{ fontSize: "18px", color: "#5e5e5e" }} />
+          </Tooltip>
         </button>
       </div>
       <div className="dialogs__search">
         <Input.Search
+          onChange={onChangeInput}
           size={"large"}
+          value={inputValue}
           placeholder="Поиск среди контактов"
           prefix={
             <SearchOutlined
@@ -36,9 +53,9 @@ const Dialogs = ({ dialogs, authUser }) => {
         />
       </div>
       <div className={"dialogs__items"}>
-        {dialogs &&
+        {filtered.length ? (
           orderBy(
-            dialogs,
+            filtered,
             (dialog) => dialog.message.createdAt,
             "desc"
           ).map((dialogItem) => (
@@ -49,7 +66,13 @@ const Dialogs = ({ dialogs, authUser }) => {
               unReaded={dialogItem.unReaded}
               isOutgoing={dialogItem.message.user._id === authUser._id}
             />
-          ))}
+          ))
+        ) : (
+          <Empty
+            description={"Ничего не найдено"}
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+          />
+        )}
       </div>
     </div>
   );
