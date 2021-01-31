@@ -3,24 +3,25 @@ import PropTypes from "prop-types";
 import orderBy from "lodash/orderBy";
 import { FormOutlined, SearchOutlined } from "@ant-design/icons";
 import { Input, Tooltip, Empty } from "antd";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 import DialogItem from "./DialogItem";
 import dialogHeaderSvg from "../../assets/icons/dialogs-header.svg";
 
 import "./Dialogs.scss";
+import { fetchDialogs } from "../../redux/actions/dialogs";
 
-const Dialogs = ({ dialogs, authUser }) => {
+const Dialogs = ({ authUser }) => {
   const [inputValue, setValue] = React.useState("");
   const [filtered, setFilteredItems] = React.useState(Array.from(dialogs));
+
   const onChangeInput = (e) => {
     const value = e.target.value;
     setValue(value);
     setFilteredItems(
       dialogs.filter(
         (dialog) =>
-          dialog.message.user.fullname
-            .toLowerCase()
-            .indexOf(value.toLowerCase()) >= 0
+          dialog.user.fullname.toLowerCase().indexOf(value.toLowerCase()) >= 0
       )
     );
   };
@@ -56,15 +57,16 @@ const Dialogs = ({ dialogs, authUser }) => {
         {filtered.length ? (
           orderBy(
             filtered,
-            (dialog) => dialog.message.createdAt,
+            (dialog) => dialog.created_at,
             "desc"
           ).map((dialogItem) => (
             <DialogItem
               key={dialogItem._id}
-              user={dialogItem.message.user}
-              message={dialogItem.message}
+              user={dialogItem.user}
+              message={dialogItem.text}
               unReaded={dialogItem.unReaded}
-              isOutgoing={dialogItem.message.user._id === authUser._id}
+              created_at={dialogItem.created_at}
+              isOutgoing={dialogItem.user._id === authUser._id}
             />
           ))
         ) : (
@@ -87,4 +89,4 @@ Dialogs.defaultProps = {
   dialogs: [],
 };
 
-export default Dialogs;
+export default connect(({ dialogs }) => dialogs.items)(Dialogs);

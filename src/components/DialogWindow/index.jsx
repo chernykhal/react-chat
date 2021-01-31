@@ -7,7 +7,7 @@ import DialogWindowInput from "./DialogWindowInput/DialogWindowInput";
 
 import "./DialogWindow.scss";
 
-const DialogWindow = () => {
+const DialogWindow = ({ items }) => {
   const selectedDialog = true;
   return (
     <div className="dialog-window">

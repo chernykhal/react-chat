@@ -82,6 +82,7 @@ Message.propTypes = {
   user: PropTypes.object,
   isReaded: PropTypes.bool,
   isOutgoing: PropTypes.bool,
+  isTyping: PropTypes.bool,
   audio: PropTypes.string,
   attachments: PropTypes.array,
 };

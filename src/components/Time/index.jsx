@@ -3,7 +3,7 @@ import differenceInHours from "date-fns/differenceInHours";
 import format from "date-fns/format";
 
 const Time = ({ date }) => {
-  const dateDifference = differenceInHours(new Date(), date);
+  const dateDifference = differenceInHours(new Date(), new Date(date));
   if (dateDifference < 24) {
     return format(new Date(date), "p");
   } else if (dateDifference >= 24 && dateDifference < 168) {
@@ -16,7 +16,7 @@ const Time = ({ date }) => {
 };
 
 Time.propTypes = {
-  date: PropTypes.object,
+  date: PropTypes.string,
 };
 
 export default Time;

@@ -6,9 +6,9 @@ import { Avatar, MessageStatus, Time } from "../../index";
 
 import "./DialogItem.scss";
 
-const DialogItem = ({ user, message, unReaded, isOutgoing }) => {
+const DialogItem = ({ user, message, unReaded, isOutgoing, created_at }) => {
+  const isReaded = true;
   const { _id, fullname, isOnline, avatar } = user;
-  const { text, isReaded, createdAt } = message;
   return (
     <div
       className={classNames("dialogs__item", {
@@ -22,11 +22,11 @@ const DialogItem = ({ user, message, unReaded, isOutgoing }) => {
         <div className="dialogs__item-info-top">
           <b>{fullname}</b>
           <span className={"dialogs__item-info-date"}>
-            <Time date={createdAt} />
+            <Time date={created_at} />
           </span>
         </div>
         <div className="dialogs__item-info-bottom">
-          <p>{text}</p>
+          <p>{message}</p>
           {isOutgoing && <MessageStatus isReaded={isReaded} />}
           {!isOutgoing && unReaded > 0 && (
             <div className="dialogs__item-info-unread">
@@ -41,7 +41,7 @@ const DialogItem = ({ user, message, unReaded, isOutgoing }) => {
 
 DialogItem.propTypes = {
   user: PropTypes.object,
-  message: PropTypes.object,
+  message: PropTypes.string,
 };
 
 DialogItem.defaultProps = {
