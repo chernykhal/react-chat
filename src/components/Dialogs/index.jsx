@@ -3,28 +3,37 @@ import PropTypes from "prop-types";
 import orderBy from "lodash/orderBy";
 import { FormOutlined, SearchOutlined } from "@ant-design/icons";
 import { Input, Tooltip, Empty } from "antd";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+
+import { fetchDialogs, setDialogs } from "../../redux/actions/dialogs";
 
 import DialogItem from "./DialogItem";
 import dialogHeaderSvg from "../../assets/icons/dialogs-header.svg";
 
 import "./Dialogs.scss";
-import { fetchDialogs } from "../../redux/actions/dialogs";
 
-const Dialogs = ({ authUser }) => {
+const Dialogs = ({ authUser, items, fetchDialogs }) => {
   const [inputValue, setValue] = React.useState("");
-  const [filtered, setFilteredItems] = React.useState(Array.from(dialogs));
-
+  const [filtered, setFilteredItems] = React.useState(Array.from(items));
+  const dispatch = useDispatch();
   const onChangeInput = (e) => {
     const value = e.target.value;
     setValue(value);
     setFilteredItems(
-      dialogs.filter(
+      items.filter(
         (dialog) =>
           dialog.user.fullname.toLowerCase().indexOf(value.toLowerCase()) >= 0
       )
     );
   };
+  React.useEffect(() => {
+    if (!items.length) {
+      dispatch(fetchDialogs());
+    } else {
+      setFilteredItems(items);
+    }
+  }, [items]);
+
   return (
     <div className={"dialogs"}>
       <div className="dialogs__header">
@@ -89,4 +98,10 @@ Dialogs.defaultProps = {
   dialogs: [],
 };
 
-export default connect(({ dialogs }) => dialogs.items)(Dialogs);
+export default connect(
+  ({ dialogs }) => dialogs,
+  () => ({
+    fetchDialogs,
+    setDialogs,
+  })
+)(Dialogs);
