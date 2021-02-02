@@ -6,14 +6,27 @@ import { Avatar, MessageStatus, Time } from "../../index";
 
 import "./DialogItem.scss";
 
-const DialogItem = ({ user, message, unReaded, isOutgoing, created_at }) => {
+const DialogItem = ({
+  user,
+  message,
+  unReaded,
+  isOutgoing,
+  created_at,
+  onSelectDialog,
+}) => {
   const isReaded = true;
   const { _id, fullname, isOnline, avatar } = user;
+
+  const onClickDialog = () => {
+    onSelectDialog(_id);
+  };
+
   return (
     <div
       className={classNames("dialogs__item", {
         "dialogs__item--online": isOnline,
       })}
+      onClick={onClickDialog}
     >
       <div className="dialogs__item-avatar">
         <Avatar user={user} />

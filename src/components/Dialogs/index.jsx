@@ -5,7 +5,11 @@ import { FormOutlined, SearchOutlined } from "@ant-design/icons";
 import { Input, Tooltip, Empty } from "antd";
 import { connect, useDispatch } from "react-redux";
 
-import { fetchDialogs, setDialogs } from "../../redux/actions/dialogs";
+import {
+  fetchDialogs,
+  setDialogs,
+  setActiveDialog,
+} from "../../redux/actions/dialogs";
 
 import DialogItem from "./DialogItem";
 import dialogHeaderSvg from "../../assets/icons/dialogs-header.svg";
@@ -16,6 +20,7 @@ const Dialogs = ({ authUser, items, fetchDialogs }) => {
   const [inputValue, setValue] = React.useState("");
   const [filtered, setFilteredItems] = React.useState(Array.from(items));
   const dispatch = useDispatch();
+
   const onChangeInput = (e) => {
     const value = e.target.value;
     setValue(value);
@@ -26,6 +31,11 @@ const Dialogs = ({ authUser, items, fetchDialogs }) => {
       )
     );
   };
+
+  const handleSetActiveDialog = (dialog) => {
+    dispatch(setActiveDialog(dialog));
+  };
+
   React.useEffect(() => {
     if (!items.length) {
       dispatch(fetchDialogs());
@@ -76,6 +86,7 @@ const Dialogs = ({ authUser, items, fetchDialogs }) => {
               unReaded={dialogItem.unReaded}
               created_at={dialogItem.created_at}
               isOutgoing={dialogItem.user._id === authUser._id}
+              onSelectDialog={handleSetActiveDialog}
             />
           ))
         ) : (
