@@ -6,6 +6,7 @@ import {
   SendOutlined,
   SmileOutlined,
 } from "@ant-design/icons";
+import { UploadField } from "@navjobs/upload";
 
 const DialogWindowInput = () => {
   const [inputValue, setInputValue] = React.useState("");
@@ -28,8 +29,22 @@ const DialogWindowInput = () => {
         suffix={
           <div className={"message-input-buttons"}>
             <Tooltip title="Снимок">
-              <CameraOutlined style={{ fontSize: "18px", color: "#CBCBCB" }} />
+              <UploadField
+                onFiles={(files) => console.log(files)}
+                containerProps={{
+                  className: "file_uploader",
+                }}
+                uploadProps={{
+                  accept: ".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.gif,.png",
+                  multiple: "multiple",
+                }}
+              >
+                <CameraOutlined
+                  style={{ fontSize: "18px", color: "#CBCBCB" }}
+                />
+              </UploadField>
             </Tooltip>
+
             {!inputValue ? (
               <Tooltip title="Голосовое сообщение">
                 <AudioOutlined style={{ fontSize: "18px", color: "#CBCBCB" }} />
