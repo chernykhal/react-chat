@@ -7,11 +7,16 @@ import {
   SmileOutlined,
 } from "@ant-design/icons";
 import { UploadField } from "@navjobs/upload";
+import { Picker } from "emoji-mart";
 
 const DialogWindowInput = () => {
   const [inputValue, setInputValue] = React.useState("");
+  const [emojiPickerVisible, setEmojiPickerVisible] = React.useState(false);
   const onChangeInput = (e) => {
     setInputValue(e.target.value);
+  };
+  const toggleEmojiPickerVisible = () => {
+    setEmojiPickerVisible(!emojiPickerVisible);
   };
   return (
     <div className="dialog-window__input">
@@ -21,10 +26,19 @@ const DialogWindowInput = () => {
         onChange={onChangeInput}
         value={inputValue}
         prefix={
-          <SmileOutlined
-            className="site-form-item-icon"
-            style={{ fontSize: "18px", color: "#CBCBCB" }}
-          />
+          <div className={"dialog-window__input-prefix"}>
+            {emojiPickerVisible && (
+              <Picker
+                set="apple"
+                style={{ position: "absolute", bottom: "50px", zIndex: "100" }}
+              />
+            )}
+            <SmileOutlined
+              className="site-form-item-icon"
+              style={{ fontSize: "18px", color: "#CBCBCB" }}
+              onClick={toggleEmojiPickerVisible}
+            />
+          </div>
         }
         suffix={
           <div className={"message-input-buttons"}>

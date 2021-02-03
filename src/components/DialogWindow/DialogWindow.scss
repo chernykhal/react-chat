@@ -102,9 +102,8 @@
 
       .ant-input-prefix {
         margin-right: 13px;
-        cursor: pointer;
-
         span {
+          cursor: pointer;
           &:hover {
             svg {
               fill: #828282;

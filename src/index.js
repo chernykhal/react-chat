@@ -8,6 +8,7 @@ import store from "./redux/store";
 import App from "./App";
 
 import "./styles/index.scss";
+import "emoji-mart/css/emoji-mart.css";
 
 ReactDOM.render(
   <React.StrictMode>
