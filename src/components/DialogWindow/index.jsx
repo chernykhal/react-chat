@@ -1,17 +1,34 @@
 import React from "react";
-import { Empty, Tooltip } from "antd";
+import { Empty, Spin, Tooltip } from "antd";
 import { EllipsisOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Message } from "../index";
 import DialogWindowInput from "./DialogWindowInput/DialogWindowInput";
 
 import "./DialogWindow.scss";
+import { fetchMessagesFromDialog } from "../../redux/actions/messages";
 
-const DialogWindow = ({ items }) => {
-  const selectedDialog = true;
+const DialogWindow = () => {
+  const dialogWindowScrollRef = React.useRef(null);
+  const items = useSelector(({ messages }) => messages.items);
+  const selectedDialog = useSelector(({ dialogs }) => dialogs.activeDialog);
+  const isLoading = useSelector(({ messages }) => messages.isLoading);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(fetchMessagesFromDialog(selectedDialog));
+  }, [selectedDialog]);
+
+  React.useEffect(() => {
+    if (dialogWindowScrollRef.current) {
+      dialogWindowScrollRef.current.scrollTo(0, 99999999999999);
+    }
+  }, [isLoading]);
+
   return (
     <div className="dialog-window">
-      {selectedDialog ? (
+      {!isLoading && selectedDialog ? (
         <React.Fragment>
           <div className="dialog-window__header">
             <div className="dialog-window__header-info">
@@ -26,227 +43,30 @@ const DialogWindow = ({ items }) => {
               </Tooltip>
             </button>
           </div>
-          <div className="dialog-window__messages">
-            <Message
-              key={Math.random()}
-              text={
-                "Мы тут недавно войска Ариовиста разбили, чуваки хотели закрепиться на галльских землях, лол 🌝"
-              }
-              date={"Sat Jan 23 2021 19:33"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: "",
-              }}
-              isOutgoing={false}
-            />
-            <Message
-              key={Math.random()}
-              text={
-                "Мы тут недавно войска Ариовиста разбили, чуваки хотели закрепиться на галльских землях, лол 🌝"
-              }
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-                fullname: "Александр",
-                avatar: null,
-              }}
-              isOutgoing={true}
-              isReaded={true}
-              attachments={[
-                {
-                  filename: "image1.jpg",
-                  url:
-                    "https://source.unsplash.com/1920x1080/?random=1&nature,water",
-                },
-                {
-                  filename: "image2.jpg",
-                  url:
-                    "https://source.unsplash.com/100x100/?random=2&nature,water",
-                },
-                {
-                  filename: "image3.jpg",
-                  url:
-                    "https://source.unsplash.com/100x100/?random=3&nature,water",
-                },
-                {
-                  filename: "image4.jpg",
-                  url:
-                    "https://source.unsplash.com/1920x1080/?random=4&nature,water",
-                },
-                {
-                  filename: "image5.jpg",
-                  url:
-                    "https://source.unsplash.com/100x100/?random=5&nature,water",
-                },
-              ]}
-            />
-            <Message
-              key={Math.random()}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              isOutgoing={false}
-              isTyping={true}
-            />
-            <Message
-              key={Math.random()}
-              text={"🌝"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              outgoing={false}
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-                fullname: "Александр",
-                avatar: null,
-              }}
-              isOutgoing={true}
-              isReaded={true}
-              attachments={[
-                {
-                  filename: "image1.jpg",
-                  url:
-                    "https://source.unsplash.com/1920x1080/?random=1&nature,water",
-                },
-              ]}
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              isOutgoing={false}
-              attachments={[
-                {
-                  filename: "image1.jpg",
-                  url:
-                    "https://source.unsplash.com/1920x1080/?random=7&nature,water",
-                },
-                {
-                  filename: "image1.jpg",
-                  url:
-                    "https://source.unsplash.com/1920x1080/?random=8&nature,water",
-                },
-              ]}
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-                fullname: "Александр",
-                avatar: null,
-              }}
-              isOutgoing={true}
-              attachments={[
-                {
-                  filename: "image1.jpg",
-                  url:
-                    "https://source.unsplash.com/1920x1080/?random=9&nature,water",
-                },
-                {
-                  filename: "image1.jpg",
-                  url:
-                    "https://source.unsplash.com/1920x1080/?random=10&nature,water",
-                },
-              ]}
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              isOutgoing={false}
-              audio={
-                "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
-              }
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              isOutgoing={false}
-              audio={
-                "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
-              }
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              isOutgoing={false}
-              audio={
-                "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
-              }
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              isOutgoing={false}
-              audio={
-                "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
-              }
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: 2,
-                fullname: "Alexey",
-                avatar: null,
-              }}
-              isOutgoing={false}
-              audio={
-                "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
-              }
-            />
-            <Message
-              key={Math.random()}
-              date={"Sat Jan 23 2021 18:00:03"}
-              user={{
-                _id: "a0eac53d7dc80c154fa80c1c8f1513e1",
-                fullname: "Александр",
-                avatar: null,
-              }}
-              isOutgoing={true}
-              audio={
-                "https://notificationsounds.com/storage/sounds/file-c2_men-laughing.ogg"
-              }
-            />
+          <div className="dialog-window__messages" ref={dialogWindowScrollRef}>
+            {items.map((message) => (
+              <Message
+                key={message._id}
+                text={message.text}
+                date={message.created_at}
+                user={{
+                  _id: 2,
+                  fullname: message.user.fullname,
+                  avatar: message.user.avatar,
+                }}
+                isOutgoing={false}
+              />
+            ))}
           </div>
           <DialogWindowInput />
         </React.Fragment>
-      ) : (
+      ) : !isLoading ? (
         <div className={"dialog-window__empty"}>
           <Empty description={"Выберите диалог, чтобы начать общение"} />
+        </div>
+      ) : (
+        <div className={"dialog-window__loading"}>
+          <Spin tip="Загрузка..."></Spin>
         </div>
       )}
     </div>

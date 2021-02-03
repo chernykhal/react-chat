@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
 
 import { Avatar, MessageStatus, Time } from "../../index";
 
@@ -16,6 +17,7 @@ const DialogItem = ({
 }) => {
   const isReaded = true;
   const { _id, fullname, isOnline, avatar } = user;
+  const selectedDialog = useSelector(({ dialogs }) => dialogs.activeDialog);
 
   const onClickDialog = () => {
     onSelectDialog(_id);
@@ -25,6 +27,7 @@ const DialogItem = ({
     <div
       className={classNames("dialogs__item", {
         "dialogs__item--online": isOnline,
+        active: _id === selectedDialog,
       })}
       onClick={onClickDialog}
     >
