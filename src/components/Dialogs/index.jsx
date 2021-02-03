@@ -3,22 +3,28 @@ import PropTypes from "prop-types";
 import orderBy from "lodash/orderBy";
 import { FormOutlined, SearchOutlined } from "@ant-design/icons";
 import { Input, Tooltip, Empty } from "antd";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 import {
   fetchDialogs,
   setDialogs,
   setActiveDialog,
 } from "../../redux/actions/dialogs";
+import {
+  fetchMessagesFromDialog,
+  setMessages,
+} from "../../redux/actions/messages";
 
 import DialogItem from "./DialogItem";
 import dialogHeaderSvg from "../../assets/icons/dialogs-header.svg";
+import Loader from "./Loader/Loader";
 
 import "./Dialogs.scss";
 
 const Dialogs = ({ authUser, items, fetchDialogs }) => {
   const [inputValue, setValue] = React.useState("");
   const [filtered, setFilteredItems] = React.useState(Array.from(items));
+  const isLoading = useSelector(({ dialogs }) => dialogs.isLoading);
   const dispatch = useDispatch();
 
   const onChangeInput = (e) => {
@@ -34,6 +40,14 @@ const Dialogs = ({ authUser, items, fetchDialogs }) => {
 
   const handleSetActiveDialog = (dialog) => {
     dispatch(setActiveDialog(dialog));
+    setValue(null);
+    setFilteredItems(items);
+  };
+
+  const handleEscPressing = (event) => {
+    if (event.keyCode === 27) {
+      dispatch(setActiveDialog(null));
+    }
   };
 
   React.useEffect(() => {
@@ -42,6 +56,7 @@ const Dialogs = ({ authUser, items, fetchDialogs }) => {
     } else {
       setFilteredItems(items);
     }
+    document.addEventListener("keydown", handleEscPressing, false);
   }, [items]);
 
   return (
@@ -73,7 +88,7 @@ const Dialogs = ({ authUser, items, fetchDialogs }) => {
         />
       </div>
       <div className={"dialogs__items"}>
-        {filtered.length ? (
+        {!isLoading && filtered.length ? (
           orderBy(
             filtered,
             (dialog) => dialog.created_at,
@@ -89,11 +104,19 @@ const Dialogs = ({ authUser, items, fetchDialogs }) => {
               onSelectDialog={handleSetActiveDialog}
             />
           ))
-        ) : (
+        ) : !isLoading ? (
           <Empty
             description={"Ничего не найдено"}
             image={Empty.PRESENTED_IMAGE_SIMPLE}
           />
+        ) : (
+          Array(10)
+            .fill(0)
+            .map((_, index) => (
+              <div className={"loader"}>
+                <Loader key={index} />
+              </div>
+            ))
         )}
       </div>
     </div>

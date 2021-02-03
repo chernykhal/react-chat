@@ -131,7 +131,7 @@
       }
     }
   }
-  &__empty{
+  &__empty, &__loading{
     height: 100%;
     display: flex;
     flex-direction: column;

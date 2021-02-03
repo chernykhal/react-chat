@@ -68,6 +68,11 @@
 
   &__items {
     overflow-y: auto;
+
+    .loader {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   ::-webkit-scrollbar {
